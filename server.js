@@ -39,7 +39,7 @@ app.use(methodOverride("_method"));
 
 //ROUTES
 //test localhost
-app.get("/moviereview", (req, res) => {
+app.get("/telly-critic", (req, res) => {
   console.log("hi");
   res.send("Hello World!");
 });
