@@ -14,13 +14,19 @@ const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/" + `telly-critic`;
 
 //connect to mongo
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log("Connection Successful")) //handles promise warnings
+  .catch((err) => console.log(err));
+mongoose.connection.once("open", () => {
+  console.log("connected to mongoose!");
 });
 
-//errors
+//mongod errors
 db.on("error", (err) => console.log(err.message + " is Mongod not running?"));
 db.on("connected", () => console.log("mongo connected: ", MONGODB_URI));
 db.on("disconnected", () => console.log("mongo disconnected"));
@@ -31,18 +37,15 @@ db.on("open", () => {});
 //MIDDLEWARE
 app.use(express.static("public"));
 
-// populates req.body with parsed info from forms - if no data from forms -empty object {}
+// populates req.body with parsed info from forms -if no data from forms(empty object {})
 app.use(express.urlencoded({ extended: false })); //doesn't allow nested objects in query strings
 app.use(express.json()); // returns middleware that only parses JSON
 
 app.use(methodOverride("_method"));
 
-//ROUTES
-//test localhost
-app.get("/telly-critic", (req, res) => {
-  console.log("hi");
-  res.send("Hello World!");
-});
+//CONTROLLERS
+const critiqueController = require("./controllers/reviews.js");
+app.use("/telly-critic", critiqueController);
 
 app.listen(PORT, () => {
   console.log("Listening to port", PORT);
