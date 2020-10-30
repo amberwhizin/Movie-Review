@@ -33,9 +33,11 @@ critique.get("/", (req, res) => {
 
 //show
 critique.get("/:id", (req, res) => {
-
-    res.send('show')
- 
+  Review.findById(req.params.id, (error, foundCritique) => {
+    res.render("show.ejs", {
+      critique: foundCritique,
+    });
+  });
 });
 
 console.log("controller/review.js is linked");
