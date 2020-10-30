@@ -45,7 +45,7 @@ app.use(methodOverride("_method"));
 
 //CONTROLLERS
 const critiqueController = require("./controllers/reviews.js");
-app.use("/telly-critic", critiqueController);
+app.use("/critiques", critiqueController);
 
 app.listen(PORT, () => {
   console.log("Listening to port", PORT);

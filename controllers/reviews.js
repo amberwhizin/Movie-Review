@@ -1,15 +1,21 @@
 const express = require("express");
-const router = express.Router();
-
-
+const critique = express.Router();
 
 //new
-router.get("/new", (req, res) => {
+critique.get("/new", (req, res) => {
   res.render("new.ejs");
 });
 
-// Create
-
+//Create
+critique.post("/", (req, res) => {
+  if (req.body.hasWatched === "on") {
+    req.body.hasWatched = true;
+  } else {
+    req.body.hasWatched = false;
+  }
+  res.send(req.body);
+  //res.redirect('/critiques')
+});
 
 console.log("controller/review.js is linked");
-module.exports = router;
+module.exports = critique;
