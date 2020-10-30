@@ -31,7 +31,18 @@ critique.get("/", (req, res) => {
   });
 });
 
-//seed 
+//edit
+critique.get("/:id/edit", (req, res) => {
+  Review.findById(req.params.id, (error, foundCritique) => {
+    res.render("edit.ejs", {
+      critique: foundCritique,
+    });
+  });
+});
+
+
+
+//seed
 //error: E11000 duplicate key error collection: telly-critic.reviews index:showtitle_1 dup key: { showtitle: null } - but I  deleted showtitle....
 
 // critique.get("/seed", async (req, res) => {

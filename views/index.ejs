@@ -15,18 +15,22 @@
 
         <li>
           <% const current = critique[index] %>
-       
-            <a href="/critiques/<%=current.id %>"> <%=current.title; %> 
-            <img src="<%= current.img %>" /> </a><br/>
-         
-          Rating: <%=current.rating %> <% if(current.hasWatched === true) %>
-          <% {%> <% } %>
+
+          <a href="/critiques/<%=current.id %>">
+            <%=current.title; %> <img src="<%= current.img %>" /> </a
+          ><br />
+
+          Rating: <%=current.rating %> <% if(current.hasWatched === true) %> <%
+          {%> <% } %>
 
           <form
             action="/critiques/<%=current.id%>?_method=DELETE"
-            method="POST">
+            method="POST"
+          >
             <input type="submit" value="DELETE" />
           </form>
+
+          <a href="/critiques/<%=current.id; %>/edit"><button>EDIT</button></a>
         </li>
         <% } %>
       </ul>
