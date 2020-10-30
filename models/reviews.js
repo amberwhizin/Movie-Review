@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const TellyReview = new Schema({
   title: { type: String, unique: true, required: true },
-  rating: Number,
-  img: "",
+  rating: { type: Number, min: 0, max: 5 },
+  img: "", //[]
   hasWatched: Boolean,
 });
 
