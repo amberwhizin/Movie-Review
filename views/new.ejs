@@ -1,6 +1,6 @@
 <html lang="en">
   <head>
-    <%- include ('../partials/head.ejs') %> 
+    <%- include ('../partials/head.ejs') %>
     <title></title>
   </head>
   <body>
@@ -8,6 +8,7 @@
     <form action="/critiques/" method="POST">
       <input type="text" name="title" /><br />
       <input type="number" name="rating" /><br />
+      <input type="image" name="image" />
       <input type="checkbox" name="hasWatched" />
       <input type="submit" name="" value="Add Critique " />
     </form>

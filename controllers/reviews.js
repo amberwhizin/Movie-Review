@@ -34,6 +34,7 @@ critique.get("/", (req, res) => {
 //show
 critique.get("/:id", (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
+    console.log({foundCritique}, req.params.id)
     res.render("show.ejs", {
       critique: foundCritique,
     });
