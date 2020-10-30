@@ -7,17 +7,26 @@
   <body>
     <h1>Telly Critic</h1>
 
-    <a href="/critiques/new"><button>Add New Product</button></a>
+    <a href="/critiques/new"><button>Add Critique</button></a>
 
     <div class="container">
       <ul>
         <% for( let index = 0; index < critique.length; index++ ) { %>
+
         <li>
-          <a href="/critiques/<%=critique[index].id; %>">
-            <%=critique[index].title; %><br />
-          </a>
-          Rating: <%=critique[index].rating; %> <% if(critique[index].hasWatched
-          === true){ %> <% } else { %> <% } %>
+          <% const current = critique[index] %>
+       
+            <a href="/critiques/<%=current.id %>"> <%=current.title; %> 
+            <img src="<%= current.img %>" /> </a><br/>
+         
+          Rating: <%=current.rating %> <% if(current.hasWatched === true) %>
+          <% {%> <% } %>
+
+          <form
+            action="/critiques/<%=current.id%>?_method=DELETE"
+            method="POST">
+            <input type="submit" value="DELETE" />
+          </form>
         </li>
         <% } %>
       </ul>

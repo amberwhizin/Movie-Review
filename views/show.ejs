@@ -4,11 +4,25 @@
     <title></title>
   </head>
   <body>
-    <h1>A Critique</h1>
     <a href="/critiques"><button>Back</button></a>
 
     <div class="container">
-      <h5><%= critique.title %></h5>
+
+        <!-- define title -->
+      <% const title = critique.title %>
+      <!-- add uppercase to second word if there is one, or to all words after a space in front of them -->
+      <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
+
+      <!-- image will be-->
+      <div class="show-image">
+        <img src="<%= critique.img %>" />
+
+        <!-- review entry -->
+        <form>
+          <label>Review</label><br/>
+          <textarea></textarea>
+        </form>
+      </div>
       <br />
     </div>
   </body>

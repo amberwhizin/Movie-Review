@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const TellyReview = new Schema({
   title: { type: String, unique: true, required: true },
+  entry: String,
   rating: { type: Number, min: 0, max: 5 },
-  img: "", //[]
-  hasWatched: Boolean,
+  img: String, //[]
+  hasWatched: { type: Boolean, default: false },
 });
 
 const Review = mongoose.model("review", TellyReview);

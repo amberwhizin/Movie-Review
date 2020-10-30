@@ -31,13 +31,42 @@ critique.get("/", (req, res) => {
   });
 });
 
+//seed 
+//error: E11000 duplicate key error collection: telly-critic.reviews index:showtitle_1 dup key: { showtitle: null } - but I  deleted showtitle....
+
+// critique.get("/seed", async (req, res) => {
+//   const newImage = [
+//     {
+//       title: "face off",
+//       entry: "this movie is the worst and the best",
+//       rating: 5,
+//       img:
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQuXJdaVQYCMUnTf-0YsMS00IT39lBDkb4CA&usqp=CAU",
+//       hasWatched: true,
+//     },
+//   ];
+//   try {
+//     const seedItems = await Review.create(newImage);
+//     res.send(seedItems);
+//   } catch (err) {
+//     res.send(err.message);
+//   }
+// });
+
 //show
 critique.get("/:id", (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
-    console.log({foundCritique}, req.params.id)
+    console.log({ foundCritique }, req.params.id);
     res.render("show.ejs", {
       critique: foundCritique,
     });
+  });
+});
+
+//delete
+critique.delete("/:id", (req, res) => {
+  Review.findByIdAndRemove(req.params.id, (error, foundCritique) => {
+    res.redirect("/critiques");
   });
 });
 
