@@ -1,4 +1,6 @@
 const express = require("express");
+const Review = require("../models/reviews.js");
+
 const critique = express.Router();
 
 //new
@@ -13,7 +15,10 @@ critique.post("/", (req, res) => {
   } else {
     req.body.hasWatched = false;
   }
-  res.send(req.body);
+ Review.create(req.body, (error, createdCritique) => {
+   res.redirect('/critiques')
+ })
+
   //res.redirect('/critiques')
 });
 
