@@ -1,6 +1,7 @@
 const express = require("express");
 const Review = require("../models/reviews.js");
 
+
 const critique = express.Router();
 
 //ROUTES
@@ -40,7 +41,18 @@ critique.get("/:id/edit", (req, res) => {
   });
 });
 
-
+//update
+critique.put("/:id", (req, res) => {
+  Review.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (error, updateCritique) => {
+      console.log(updateCritique);
+      res.redirect("/critiques");
+    }
+  );
+});
 
 //seed
 //error: E11000 duplicate key error collection: telly-critic.reviews index:showtitle_1 dup key: { showtitle: null } - but I  deleted showtitle....

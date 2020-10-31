@@ -6,7 +6,7 @@ const TellyReview = new Schema({
   entry: String,
   rating: { type: Number, min: 0, max: 5 },
   img: String, //[]
-  hasWatched: { type: Boolean, default: false },
+  hasWatched: Boolean,
 });
 
 const Review = mongoose.model("review", TellyReview);

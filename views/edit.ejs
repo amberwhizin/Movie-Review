@@ -7,14 +7,11 @@
   <body>
     <h1>Need A Change?</h1>
     <form action="/critiques/<%=critique.id%>?_method=PUT" method="POST">
-      <input type="text" name="title" value="<%=critique.title%>"/><br/>
-      <input type="checkbox" name="hasWatched" 
-      <% if (critique.hasWatched === true) { %> 
-        checked 
-        <% } %> 
-      />
-      <br/>
-      <input type="submit" name="" value="Submit Changes"/>
+      <input type="text" name="title" value="<%=critique.title%>" /><br />
+      <input type="checkbox" name="hasWatched" <% if (critique.hasWatched ===
+      true) { %> checked <% } %> />
+      <br />
+      <input type="submit" name="" value="Submit Changes" />
     </form>
   </body>
 </html>
