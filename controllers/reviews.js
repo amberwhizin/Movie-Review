@@ -73,7 +73,7 @@ critique.get("/seed", async (req, res) => {
     },
     {
       title: "Buffy The Vampire Slayer",
-      entry: "A young woman is chosen to fight demons and save the world. Over and over again. You'll cry, you'll laugh, and scream, with Buffy and all her friends in this horror Horror Dramedy made for all audiences.",
+      entry: "A young woman is chosen to fight demons and save the world. Over and over again. You'll cry, you'll laugh, and scream, with Buffy and all her friends in this horror Horror-Dramedy made for all audiences.",
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRg0Z4powVBDQ3DFGARsOQC_J6OcKquWi7suw&usqp=CAU",
