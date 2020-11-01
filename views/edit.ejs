@@ -6,13 +6,15 @@
   </head>
   <body>
     <h1>Need A Change?</h1>
-    <form action="/critiques/<%=critique.id%>?_method=PUT" method="POST">
-      <label>Title</label><br />
-      <input type="text" name="title" value="<%=critique.title%>" /><br /> 
+    <form action="/critiques/<%= critique.id %>?_method=PUT" method="POST">
+      <labe for="title">Title</label><br />
+      <input type="text" id="title" name="title" value="<%= critique.title %>" /><br /> 
+      <label for="image">Cover</label><br />
+      <input type="text" id="image" name="image" value="<%= critique.img %>" /><br />
       <label for="rating">Rating</label><br />
-      <input type="number" id="rating" name="rating" value="<%=critique.rating%>" /><br /> 
+      <input type="number" id="rating" name="rating" value="<%= critique.rating %>" /><br /> 
       <label for="entry">Review</label><br />
-      <input type="text" id="entry" name="entry" value="<%=critique.entry%>" /><br />
+      <input type="text" id="entry" name="entry" value="<%= critique.entry %>" /><br />
       <input type="submit" name="" value="Submit Changes" />   
     </form>
   </body>
