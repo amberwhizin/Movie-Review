@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 const TellyReview = new Schema({
   title: { type: String, unique: true, required: true },
   entry: String,
-  rating: { type: Number, min: 0, max: 5 },
+  rating: { type: Number },
   img: String, //[]
-  hasWatched: Boolean,
+  hasWatched: {type: Boolean},
 });
 
 const Review = mongoose.model("review", TellyReview);
 
 module.exports = Review;
+ 

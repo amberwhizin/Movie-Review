@@ -18,18 +18,10 @@
 
           <a href="/critiques/<%=current.id %>">
             <!-- title and image -->
-            <%=current.title; %> <img src="<%= current.img %>" /> </a
-          ><br />
+            <%=current.title; %> <img src="<%= current.img %>" /> </a><br />
           <!-- rating -->
-          Rating: <%=current.rating %> <% if(current.hasWatched === true) { %>
-          <% } %>
+          Rating: <%=current.rating %> 
         </li>
-
-        <form action="/critiques/<%=current.id%>?_method=DELETE" method="POST">
-          <input type="submit" value="DELETE" />
-        </form>
-
-        <a href="/critiques/<%=current.id; %>/edit"><button>EDIT</button></a>
 
         <% } %>
       </ul>

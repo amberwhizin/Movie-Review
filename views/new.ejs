@@ -6,12 +6,17 @@
   </head>
   <body>
     <h1>A New Critique</h1>
-    <form action="/critiques/" method="POST">
+    <form action="/critiques" method="POST">
+      <label>Title</label><br />
       <input type="text" name="title" /><br />
+      <label>Rating</label><br />
       <input type="number" name="rating" /><br />
-      <input type="image" name="image" />
-      <input type="checkbox" name="hasWatched" />
-      <input type="submit" name="" value="Add Critique " />
+      
+      <label for="entry">Review</label><br />
+      <textarea id="entry" name="entry" rows="20" cols="40"></textarea><br /><br />
+   
+    <input type="submit" name="" value="Add Critique " />
     </form>
   </body>
 </html>
+

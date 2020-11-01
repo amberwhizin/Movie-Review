@@ -1,7 +1,6 @@
 const express = require("express");
 const Review = require("../models/reviews.js");
 
-
 const critique = express.Router();
 
 //ROUTES
@@ -13,11 +12,11 @@ critique.get("/new", (req, res) => {
 
 //Create
 critique.post("/", (req, res) => {
-  if (req.body.hasWatched === "on") {
-    req.body.hasWatched = true;
-  } else {
-    req.body.hasWatched = false;
-  }
+  // if (req.body.hasWatched === "on") {
+  //   req.body.hasWatched = true;
+  // } else {
+  //   req.body.hasWatched = false;
+  // }
   Review.create(req.body, (error, createdCritique) => {
     res.redirect("/critiques");
   });
@@ -38,7 +37,7 @@ critique.get("/:id/edit", (req, res) => {
     res.render("edit.ejs", {
       critique: foundCritique,
     });
-  });
+  }); 
 });
 
 //update
@@ -48,15 +47,13 @@ critique.put("/:id", (req, res) => {
     req.body,
     { new: true },
     (error, updateCritique) => {
-      console.log(updateCritique);
-      res.redirect("/critiques");
+      res.redirect(`/critiques/${req.params.id}`);
     }
   );
 });
 
-//seed
-//error: E11000 duplicate key error collection: telly-critic.reviews index:showtitle_1 dup key: { showtitle: null } - but I  deleted showtitle....
 
+//seed
 // critique.get("/seed", async (req, res) => {
 //   const newImage = [
 //     {
@@ -79,7 +76,6 @@ critique.put("/:id", (req, res) => {
 //show
 critique.get("/:id", (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
-    console.log({ foundCritique }, req.params.id);
     res.render("show.ejs", {
       critique: foundCritique,
     });
