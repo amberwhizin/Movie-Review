@@ -8,15 +8,23 @@
     <div class="container">
     <h1>Need A Change?</h1>
     <form action="/critiques/<%= critique.id %>?_method=PUT" method="POST">
-      <labe for="title">Title</label><br />
-      <input type="text" id="title" name="title" value="<%= critique.title %>" /><br /> 
-      <label for="image">Cover</label><br />
-      <input type="text" id="image" name="img" value="<%= critique.img %>" /><br />
-      <label for="rating">Rating</label><br />
-      <input type="number" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" /><br /> 
-      <label for="entry">Review</label><br />
-      <input type="text" id="entry" name="entry" value="<%= critique.entry %>" /><br />
-      <input type="submit" name="" value="Submit Changes" />   
+      <div class="form-group">
+        <labe for="title">Title</label><br />
+        <input type="text" class="form-control" id="title" name="title" value="<%= critique.title %>" /><br /> 
+      </div>
+      <div class="form-group">
+        <label for="image">Cover</label><br />
+        <input type="text" class="form-control" id="image" name="img" value="<%= critique.img %>" /><br />
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label><br />
+        <input type="number" class="form-control" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" /><br /> 
+      </div>
+      <div class="form-group">
+        <label for="entry">Review</label><br />
+        <input type="text" class="form-control" id="entry" name="entry" value="<%= critique.entry %>" /><br />
+      </div>
+      <button type="submit" name="" value="Submit Changes" class="btn btn-primary">Submit Changes</button>   
     </form>
   </div>
 
