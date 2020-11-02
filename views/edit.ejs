@@ -5,6 +5,7 @@
     <title></title>
   </head>
   <body>
+    <div class="container">
     <h1>Need A Change?</h1>
     <form action="/critiques/<%= critique.id %>?_method=PUT" method="POST">
       <labe for="title">Title</label><br />
@@ -17,5 +18,9 @@
       <input type="text" id="entry" name="entry" value="<%= critique.entry %>" /><br />
       <input type="submit" name="" value="Submit Changes" />   
     </form>
+  </div>
+
+      <%- include ('../partials/script.ejs') %>
+
   </body>
 </html>   

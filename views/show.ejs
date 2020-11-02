@@ -16,7 +16,7 @@
       <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
       <!-- image will be-->
       <div class="show-image">
-        <img src="<%= critique.img %>" /><br />
+        <img src="<%= critique.img %>" class="rounded"/><br />
          <%= critique.entry %>    <!-- edit -->
          <a href="/critiques/<%= critique.id %>/edit"><button>Edit</button></a><br />
               <!-- delete -->
@@ -31,5 +31,8 @@
       </div>
       <br />
     </div>
+  
+      <%- include ('../partials/script.ejs') %>
+  
   </body>
 </html>

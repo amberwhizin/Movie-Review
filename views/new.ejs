@@ -5,12 +5,13 @@
     <title></title>
   </head>
   <body>
+    <div class="container">
     <h1>A New Critique</h1>
     <form action="/critiques" method="POST">
       <label for="title">Title</label><br />
       <input type="text" id="title"name="title" /><br />
       <label for="img">Cover</label><br />
-      <input type="text" id ="img" name="img" /><br />
+      <input type="text" id ="img" name="img" class="rounded" /><br />
       <label for="rating">Rating</label><br />
       <input type="number" id="rating"name="rating" min="0" max="5" /><br />
       
@@ -19,6 +20,10 @@
    
       <input type="submit" name="" value="Add Critique " />
     </form>
+  </div>
+ 
+      <%- include ('../partials/script.ejs') %>
+
   </body>
 </html>
 
