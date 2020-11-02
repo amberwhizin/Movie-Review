@@ -5,12 +5,13 @@
     <title></title>
   </head>
   <body>
-    <!-- back to main -->
-    <nav>
-    <a href="/critiques"><button>Home</button></a>
-  </nav>
-   
     <div class="container">
+  <nav>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="/critiques"><button class="btn btn-primary">Home</button></a>
+    </li>
+  </nav>
       <!-- define title -->
       <% const title = critique.title %>    
       <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
@@ -19,12 +20,12 @@
       <!-- image will be-->
       <div class="show-image">
         <img src="<%= critique.img %>" class="rounded"/><br />
-         <%= critique.entry %> 
+         <p><%= critique.entry %></p>
             <!-- edit -->
-         <a href="/critiques/<%= critique.id %>/edit"><button>Edit</button></a><br />
+         <a href="/critiques/<%= critique.id %>/edit">Edit</a><br />
               <!-- delete -->
       <form action="/critiques/<%= critique.id %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE" />
+        <button type="submit" value="DELETE" class="btn btn-danger">Delete</button>
      </form>
       
         <!-- review entry -->
