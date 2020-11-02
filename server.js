@@ -35,13 +35,12 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 db.on("open", () => {});
 
 //MIDDLEWARE
-app.use(express.static("public"));
-
+app.use(express.static(__dirname + '/public'));
 // populates req.body with parsed info from forms -if no data from forms(empty object {})
 app.use(express.urlencoded({ extended: false })); //doesn't allow nested objects in query strings
 app.use(express.json()); // returns middleware that only parses JSON
-
 app.use(methodOverride("_method"));
+
 
 //CONTROLLERS
 const critiqueController = require("./controllers/reviews.js");
