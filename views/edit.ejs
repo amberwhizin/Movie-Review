@@ -12,7 +12,7 @@
       <label for="image">Cover</label><br />
       <input type="text" id="image" name="img" value="<%= critique.img %>" /><br />
       <label for="rating">Rating</label><br />
-      <input type="number" id="rating" name="rating" value="<%= critique.rating %>" /><br /> 
+      <input type="number" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" /><br /> 
       <label for="entry">Review</label><br />
       <input type="text" id="entry" name="entry" value="<%= critique.entry %>" /><br />
       <input type="submit" name="" value="Submit Changes" />   
