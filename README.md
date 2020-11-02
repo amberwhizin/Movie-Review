@@ -27,12 +27,12 @@ This app has 7+ RESTful routes, and is full CRUD with an MVC file structure.
 3. EJS
 4. Bootstrap 
 
-## Applications
+## Helpful Applications
 
 1. Postman
 2. MongoDb Compass
 
-## The Back-End
+## Back-End
 
 The back end was build with:
 

@@ -6,13 +6,14 @@
   </head>
   <body>
     <div class="container">
-    <h1>Telly Critic</h1>
-
-    <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button>
-    </a>
-      <ul>
+      <div class="header">
+        <h1>Telly Critic</h1>
+        <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button>
+        </a>
+      </div>
+      <ul class="reviews">
         <% for( let index = 0; index < critique.length; index++ ) { %>
-        <li>
+        <li class="review">
           <% const current = critique[index] %>
           <a href="/critiques/<%=current.id %>">
            <!-- title -->
