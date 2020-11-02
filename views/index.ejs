@@ -8,24 +8,27 @@
     <div class="container">
     <h1>Telly Critic</h1>
 
-    <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button></a>
+    <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button>
+    </a>
       <ul>
         <% for( let index = 0; index < critique.length; index++ ) { %>
-
         <li>
           <% const current = critique[index] %>
-
           <a href="/critiques/<%=current.id %>">
-            <!-- title and image -->
-            <%=current.title; %> <br /> <img src="<%= current.img %>" class="rounded" /> </a><br />
+           <!-- title -->
+            <%=current.title %>
+            <br /> 
+            <!-- img -->
+            <img src="<%= current.img %>" class="rounded" /> 
+          </a>
+          <br />
           <!-- rating -->
           Rating: <%=current.rating %> 
         </li>
-
         <% } %>
       </ul>
     </div>
-    <!-- jquery, popper.js, bootstrap -->
+    <!-- jquery then popper.js then bootstrap -->
       <%- include ('../partials/script.ejs') %>
   </body>
 </html>
