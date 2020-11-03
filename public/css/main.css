@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.add-button {
+  margin-left: 75px;
+}
+
 ul.reviews {
   padding: 0;
   list-style-type: none;
