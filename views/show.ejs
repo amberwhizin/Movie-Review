@@ -5,13 +5,20 @@
     <title></title>
   </head>
   <body>
+    <!-- siting bootstrap docs -->
+    <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
+    <div class="container-fullwidth">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/critiques">Home <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </div>
     <div class="container">
-  <nav>
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" href="/critiques"><button class="btn btn-primary">Home</button></a>
-    </li>
-  </nav>
       <!-- define title -->
       <% const title = critique.title %>    
       <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
@@ -27,16 +34,9 @@
       <form action="/critiques/<%= critique.id %>?_method=DELETE" method="POST">
         <button type="submit" value="DELETE" class="btn btn-danger">Delete</button>
      </form>
-      
-        <!-- review entry -->
-        <!-- i don't want the user to be able to enter anything on this page, thats what the edit page is for, this is for a close up -->
-
-    
       </div>
       <br />
     </div>
-  
       <%- include ('../partials/script.ejs') %>
-  
   </body>
 </html>

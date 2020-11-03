@@ -1,9 +1,3 @@
-.container {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -34,4 +28,9 @@ li a {
 li a:hover {
   color: #9932cc;
   text-decoration: underline;
+}
+
+img {
+  width: 400px;
+  height: auto;
 }

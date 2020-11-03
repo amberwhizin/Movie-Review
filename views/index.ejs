@@ -5,11 +5,24 @@
     <title></title>
   </head>
   <body>
-    <div class="container">
+    <div class="container-fullwidth">
+      <!-- siting bootstrap docs -->
+      <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/critiques">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+    </nav>
       <div class="header">
         <h1>Telly Critic</h1>
+        <div class="add-button">
         <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button>
         </a>
+        </div>
       </div>
       <ul class="reviews">
         <% for( let index = 0; index < critique.length; index++ ) { %>
