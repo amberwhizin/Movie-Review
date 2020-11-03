@@ -46,7 +46,7 @@ The back end was build with:
 - Build model with all 7 RESTful routes
 - Full CRUD
 - Seed some data/images/new route 
-- Add bootstrap 
+- Add bootstrap and CSS3
 - Check everything is up to specs and check local and live deploys
 
 
@@ -74,6 +74,7 @@ https://projects.invisionapp.com/freehand/document/OJjMhA5jL
 - default route for errors
 - API for images if user doesn't select
 - Search bar
+- add nav-bar fixed-top
 - Search server for images/Scraping
 
 
