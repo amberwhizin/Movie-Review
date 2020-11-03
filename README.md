@@ -50,11 +50,9 @@ The back end was build with:
 - Check everything is up to specs and check local and live deploys
 
 
-FE deployed site: 
+Live site:
 
-FE Repo: 
-
-BE deployed site on Heroku:
+https://telly-critic.herokuapp.com/critiques
 
 Wireframes:
 
