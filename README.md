@@ -69,6 +69,7 @@ https://projects.invisionapp.com/freehand/document/OJjMhA5jL
 - Add catagories, romance, horror, date night, etc...
 - I'd like the edit page to highlight all the inputs when in edit page
 - A confirm option after you press delete 
+- apply a generic photo for reviews with missing photos
 - default route for errors
 - API for images if user doesn't select
 - Search bar

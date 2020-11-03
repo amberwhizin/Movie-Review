@@ -1,6 +1,10 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
+
+//CONFIGURATION
+require("dotenv").config();
+
 const app = express();
 const db = mongoose.connection;
 
@@ -35,12 +39,11 @@ db.on("disconnected", () => console.log("mongo disconnected"));
 db.on("open", () => {});
 
 //MIDDLEWARE
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 // populates req.body with parsed info from forms -if no data from forms(empty object {})
 app.use(express.urlencoded({ extended: false })); //doesn't allow nested objects in query strings
 app.use(express.json()); // returns middleware that only parses JSON
 app.use(methodOverride("_method"));
-
 
 //CONTROLLERS
 const critiqueController = require("./controllers/reviews.js");
