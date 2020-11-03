@@ -46,8 +46,13 @@ app.use(express.json()); // returns middleware that only parses JSON
 app.use(methodOverride("_method"));
 
 //CONTROLLERS
+//reviews
 const critiqueController = require("./controllers/reviews.js");
 app.use("/critiques", critiqueController);
+
+//user
+const userController = require("./controllers/users.js")
+app.use("/users", userController)
 
 app.listen(PORT, () => {
   console.log("Listening to port", PORT);
