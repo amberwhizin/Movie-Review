@@ -8,7 +8,7 @@
     <!-- siting bootstrap docs -->
     <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
     <div class="container-fullwidth">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -31,13 +31,22 @@
       </div>
       <div class="form-group">
         <label for="rating">Rating</label><br />
-        <input type="number" class="form-control" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" /><br /> 
+        <select type="number" class="form-control" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <br /> 
       </div>
       <div class="form-group">
         <label for="entry">Review</label><br />
-        <input type="text" class="form-control" id="entry" name="entry" value="<%= critique.entry %>" /><br />
+        <textarea class="form-control" id="entry" name="entry" value="<%= critique.entry %>" rows="15"><%= critique.entry %></textarea><br />
       </div>
-      <button type="submit" name="" value="Submit Changes" class="btn btn-primary">Submit Changes</button>   
+      <!-- button -->
+      <button type="submit" name="" value="Submit Changes" class="btn      btn-primary">Submit Changes</button>   
+      <button type="submit" class="btn btn-light">Back</button>
     </form>
     <!-- partial -->
    </div>

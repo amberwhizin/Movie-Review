@@ -34,7 +34,26 @@ li a:hover {
   text-decoration: underline;
 }
 
+.form-control {
+  resize: none;
+}
+
 img {
   width: 400px;
   height: auto;
+}
+
+/* media queries */
+@media only screen and (max-width: 800px) {
+  .container  {
+    height: 5em;
+    width: 5em;
+  }
+}
+
+@media only screen and (max-width: 678px) {
+  .container {
+    height: 2em;
+    width: 2em;
+  }
 }
