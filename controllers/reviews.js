@@ -1,6 +1,5 @@
 const express = require("express");
 const Review = require("../models/reviews.js");
-//const bootstrap = require("bootstrap");
 
 const critique = express.Router();
 
