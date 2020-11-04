@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ('../../partials/head.ejs') %>
+    <title></title>
+</head>
+<body>
+    <!-- login page -->
+<div class="container">
+    <form>
+        <label>Welcome Back!</label><br />
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username"/><br />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control"id="password" name="password"/><br />
+        </div>
+        <button type="submit" name="" value="Sign-In" class="btn btn-primary">Sign In</button>
+    </form>
+</div>
+     <!-- bootstrap -->
+     <%- include ('../../partials/script.ejs') %>
+</body>
+</html>

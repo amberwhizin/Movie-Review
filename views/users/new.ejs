@@ -5,15 +5,21 @@
     <title></title>
 </head>
 <body>
-
-<form action="/users" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" />
-    <input type="submit" value="Submit" />
-</form>
-
+<div class="container">
+    <!-- new user, sign up page -->
+    <form action="/users" method="POST">
+        <div class="form-group">
+            <label>Welcome To TellyCritic!</label><br />
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" /><br />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" /><br />
+        </div>
+        <button type="submit" name="" value="Sign-Up" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
 
     <!-- bootstrap -->
     <%- include ('../../partials/script.ejs') %>
