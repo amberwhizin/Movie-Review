@@ -7,7 +7,7 @@
 <body>
     <!-- login page -->
 <div class="container">
-    <form>
+    <form action="/sessions" method="POST">
         <label>Welcome Back!</label><br />
         <div class="form-group">
             <label for="username">Username</label>
@@ -16,6 +16,7 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control"id="password" name="password"/><br />
+            <div class="message"></div>
         </div>
         <button type="submit" name="" value="Sign-In" class="btn btn-primary">Sign In</button>
     </form>
