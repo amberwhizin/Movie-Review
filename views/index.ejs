@@ -15,8 +15,10 @@
           </a>
            <!-- and user id -->
            <div class="welcome-user">
-           Welcome <% if (currentUser) { %>
+             <div class="username-margin">
+           Welcome <% if (currentUser) { %>    
             <%= currentUser.username %>
+          </div>
             <form action="/sessions?_method=DELETE" method="POST">
               <a href="/sessions/new"><button class="btn btn-outline-secondary">Log Out</button>
               </a>
