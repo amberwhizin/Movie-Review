@@ -17,7 +17,13 @@ users.post("/", (req, res) => {
   //createdUser is coming up undefined, come back to this
   User.create(req.body, (error, createdUser) => {
     //console.log("boo", { body: req.body, createdUser, error });
-    res.redirect("/critiques");
+     if (createdUser) {
+      req.session.currentUser = createdUser;
+      res.redirect("/critiques");
+      // compare if the foundUser matches the password in dbs
+    } else if (error) {
+      res.send('<a href="users/new">Oh dear, there was an error </a>');
+    } 
   });
 });
 
