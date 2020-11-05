@@ -10,14 +10,20 @@
     <div class="container-fullwidth">
       <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/critiques" href="#">Home</a>
+        <!-- add button -->
+          <a href="/critiques/new"><button class="btn btn-outline-success">Add Critique</button>
+          </a>
+           <!-- and user id -->
+           <div class="welcome-user">
+           Welcome <% if (currentUser) { %>
+            <%= currentUser.username %>
+         <% } %>
+        </div>
       </nav>
       <div class="header">
         <h1>Telly Critic</h1>
       </div>
-      <div class="add-button">
-        <a href="/critiques/new"><button class="btn btn-primary">Add Critique</button>
-        </a>
-      </div>
+     
       <ul class="reviews">
         <% for( let index = 0; index < critique.length; index++ ) { %>
         <li class="review">
