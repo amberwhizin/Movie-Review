@@ -7,7 +7,8 @@ const critique = express.Router();
 
 //new
 critique.get("/new", (req, res) => {
-  res.render("new.ejs");
+  res.render("new.ejs", 
+  { currentUser: req.session.currentUser });
 });
 
 //Create
@@ -27,6 +28,7 @@ critique.get("/", (req, res) => {
   Review.find({}, (error, allCritiques) => {
     res.render("index.ejs", {
       critique: allCritiques,
+      currentUser: req.session.currentUser 
     });
   });
 });
@@ -36,6 +38,7 @@ critique.get("/:id/edit", (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
     res.render("edit.ejs", {
       critique: foundCritique,
+      currentUser: req.session.currentUser 
     });
   });
 });
@@ -114,6 +117,7 @@ critique.get("/:id", (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
     res.render("show.ejs", {
       critique: foundCritique,
+      currentUser: req.session.currentUser 
     });
   });
 });

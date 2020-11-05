@@ -5,7 +5,7 @@ const User = require("../models/users.js");
 
 users.get("/new", (req, res) => {
   //new.ejs is reviews- new.ejs
-  res.render("users/new.ejs");
+  res.render("users/new.ejs", { currentUser: req.session.currentUser });
 });
 
 users.post("/", (req, res) => {
