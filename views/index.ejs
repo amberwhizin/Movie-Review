@@ -17,6 +17,10 @@
            <div class="welcome-user">
            Welcome <% if (currentUser) { %>
             <%= currentUser.username %>
+            <form action="/sessions?_method=DELETE" method="POST">
+              <a href="/sessions/new"><button class="btn btn-outline-secondary">Log Out</button>
+              </a>
+            </form>
          <% } %>
         </div>
       </nav>
