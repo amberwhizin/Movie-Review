@@ -4,7 +4,7 @@ const Review = require("../models/reviews.js");
 const critique = express.Router();
 
 //MIDDLEWARE
-//avoids repetition of login security
+// if user credentials match then "next" go to the pages/routes your going to already, otherwise go back to the login page, wow!
 const isAuthenticated = (req, res, next) => {
   if (req.session.currentUser) {
     return next();
