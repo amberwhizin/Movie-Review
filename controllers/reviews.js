@@ -3,12 +3,21 @@ const Review = require("../models/reviews.js");
 
 const critique = express.Router();
 
+//MIDDLEWARE
+//avoids repetition of login security
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect("/sessions/new");
+  }
+};
+
 //ROUTES
 
 //new
-critique.get("/new", (req, res) => {
-  res.render("new.ejs", 
-  { currentUser: req.session.currentUser });
+critique.get("/new", isAuthenticated, (req, res) => {
+  res.render("new.ejs", { currentUser: req.session.currentUser });
 });
 
 //Create
@@ -24,27 +33,27 @@ critique.post("/", (req, res) => {
 });
 
 //index
-critique.get("/", (req, res) => {
+critique.get("/", isAuthenticated, (req, res) => {
   Review.find({}, (error, allCritiques) => {
     res.render("index.ejs", {
       critique: allCritiques,
-      currentUser: req.session.currentUser 
+      currentUser: req.session.currentUser,
     });
   });
 });
 
 //edit
-critique.get("/:id/edit", (req, res) => {
+critique.get("/:id/edit", isAuthenticated, (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
     res.render("edit.ejs", {
       critique: foundCritique,
-      currentUser: req.session.currentUser 
+      currentUser: req.session.currentUser,
     });
   });
 });
 
 //update
-critique.put("/:id", (req, res) => {
+critique.put("/:id", isAuthenticated, (req, res) => {
   Review.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -56,7 +65,7 @@ critique.put("/:id", (req, res) => {
 });
 
 //seed
-critique.get("/seed", async (req, res) => {
+critique.get("/seed", isAuthenticated, async (req, res) => {
   const seedImage = [
     {
       title: "Fifth Element",
@@ -113,17 +122,17 @@ critique.get("/seed", async (req, res) => {
 });
 
 //show
-critique.get("/:id", (req, res) => {
+critique.get("/:id", isAuthenticated, (req, res) => {
   Review.findById(req.params.id, (error, foundCritique) => {
     res.render("show.ejs", {
       critique: foundCritique,
-      currentUser: req.session.currentUser 
+      currentUser: req.session.currentUser,
     });
   });
 });
 
 //delete
-critique.delete("/:id", (req, res) => {
+critique.delete("/:id", isAuthenticated, (req, res) => {
   Review.findByIdAndRemove(req.params.id, (error, foundCritique) => {
     res.redirect("/critiques");
   });
