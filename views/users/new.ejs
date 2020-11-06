@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title></title>
+  <%- include ('../../partials/head.ejs') %>
+  <title>Sign Up Page</title>
 </head>
 <body>
-
-<form>
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" />
-</form>
-
-
-    <!-- bootstrap -->
-   
+  <div class="container-form">
+    <!-- new user, sign up page -->
+    <form action="/users" method="POST">
+      <div class="form-group">
+        <h2>TellyCritic</h2><br />
+        <h4>Sign Up</h4><br />
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" /><br />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" /><br />
+      </div>
+      <!-- sign-up -->
+      <button type="submit" name="" value="Sign-Up" class="btn btn-primary">Sign Up</button>
+      <!-- sign-in -->
+        <a href="../sessions/new">
+        <button type="button" class="btn btn-link">Sign In</button>
+        </a>  
+    </form>
+  </div>
+<!-- bootstrap -->
+<%- include ('../../partials/script.ejs') %>
 </body>
 </html>

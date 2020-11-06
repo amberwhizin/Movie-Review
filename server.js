@@ -1,6 +1,7 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 //CONFIGURATION
 require("dotenv").config();
@@ -44,6 +45,15 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: false })); //doesn't allow nested objects in query strings
 app.use(express.json()); // returns middleware that only parses JSON
 app.use(methodOverride("_method"));
+//session
+app.use(
+  session({
+    // do not copy this value!
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 //CONTROLLERS
 //reviews
@@ -51,8 +61,11 @@ const critiqueController = require("./controllers/reviews.js");
 app.use("/critiques", critiqueController);
 
 //user
-const userController = require("./controllers/users.js")
-app.use("/users", userController)
+const userController = require("./controllers/users.js");
+app.use("/users", userController);
+
+const sessionController = require("./controllers/sessions.js");
+app.use("/sessions", sessionController);
 
 app.listen(PORT, () => {
   console.log("Listening to port", PORT);

@@ -3,48 +3,79 @@ const Review = require("../models/reviews.js");
 
 const critique = express.Router();
 
+//MIDDLEWARE
+// if user credentials match then "next" go to the pages/routes your going to already, otherwise go back to the login page, wow!
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next();
+  } else {
+    res.redirect("/sessions/new");
+  }
+};
+
 //ROUTES
 
 //new
-critique.get("/new", (req, res) => {
-  res.render("new.ejs");
+critique.get("/new", isAuthenticated, (req, res) => {
+  res.render("new.ejs", { currentUser: req.session.currentUser });
 });
 
 //Create
-critique.post("/", (req, res) => {
-  // if (req.body.hasWatched === "on") {
-  //   req.body.hasWatched = true;
-  // } else {
-  //   req.body.hasWatched = false;
-  // }
-  Review.create(req.body, (error, createdCritique) => {
-    res.redirect("/critiques");
-  });
+critique.post("/", isAuthenticated, (req, res) => {
+  Review.create(
+    // copy of req.body and add userId
+    {
+      title: req.body.title,
+      entry: req.body.entry,
+      rating: req.body.rating,
+      img: req.body.img,
+      userId: req.session.currentUser._id,
+    },
+    (error, createdCritique) => {
+      res.redirect("/critiques");
+    }
+  );
 });
 
 //index
-critique.get("/", (req, res) => {
-  Review.find({}, (error, allCritiques) => {
-    res.render("index.ejs", {
-      critique: allCritiques,
-    });
-  });
+critique.get("/", isAuthenticated, (req, res) => {
+  Review.find(
+    //all  that have that userId
+    { userId: req.session.currentUser._id },
+    (error, allCritiques) => {
+      res.render("index.ejs", {
+        critique: allCritiques,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //edit
-critique.get("/:id/edit", (req, res) => {
-  Review.findById(req.params.id, (error, foundCritique) => {
-    res.render("edit.ejs", {
-      critique: foundCritique,
-    });
-  });
+critique.get("/:id/edit", isAuthenticated, (req, res) => {
+  Review.findOne(
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.render("edit.ejs", {
+        critique: foundCritique,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //update
-critique.put("/:id", (req, res) => {
-  Review.findByIdAndUpdate(
-    req.params.id,
-    req.body,
+critique.put("/:id", isAuthenticated, (req, res) => {
+  Review.findOneAndUpdate(
+    //matches userId and critique _id
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    {
+      title: req.body.title,
+      entry: req.body.entry,
+      rating: req.body.rating,
+      img: req.body.img,
+      userId: req.session.currentUser._id,
+    },
     { new: true },
     (error, updateCritique) => {
       res.redirect(`/critiques/${req.params.id}`);
@@ -53,7 +84,7 @@ critique.put("/:id", (req, res) => {
 });
 
 //seed
-critique.get("/seed", async (req, res) => {
+critique.get("/seed", isAuthenticated, async (req, res) => {
   const seedImage = [
     {
       title: "Fifth Element",
@@ -62,7 +93,7 @@ critique.get("/seed", async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQuXJdaVQYCMUnTf-0YsMS00IT39lBDkb4CA&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Face Off",
@@ -71,7 +102,7 @@ critique.get("/seed", async (req, res) => {
       rating: 3,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ20W5H06mwUOwuvIciliClksGx8r7neezvzw&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Buffy The Vampire Slayer",
@@ -80,7 +111,7 @@ critique.get("/seed", async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRg0Z4powVBDQ3DFGARsOQC_J6OcKquWi7suw&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Tucker and Dale VS Evil",
@@ -89,7 +120,7 @@ critique.get("/seed", async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQD8pllsf06LUmPDz2qV1mVdk3NVgXNCiAyqQ&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Star Trek: The Next Generation",
@@ -98,7 +129,7 @@ critique.get("/seed", async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS6IsxwnCMnbZ6wDMElcOu1TqTYmPbrGJsoHg&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
   ];
   try {
@@ -110,19 +141,29 @@ critique.get("/seed", async (req, res) => {
 });
 
 //show
-critique.get("/:id", (req, res) => {
-  Review.findById(req.params.id, (error, foundCritique) => {
-    res.render("show.ejs", {
-      critique: foundCritique,
-    });
-  });
+critique.get("/:id", isAuthenticated, (req, res) => {
+  Review.findOne(
+    // searching for both ids, first object with both ids
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.render("show.ejs", {
+        critique: foundCritique,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //delete
-critique.delete("/:id", (req, res) => {
-  Review.findByIdAndRemove(req.params.id, (error, foundCritique) => {
-    res.redirect("/critiques");
-  });
+critique.delete("/:id", isAuthenticated, (req, res) => {
+  Review.findByIdAndRemove(
+    //condition and callback
+    // userId prevents someone from deleting my tellycritic details, 
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.redirect("/critiques");
+    }
+  );
 });
 
 console.log("controller/review.js is linked");

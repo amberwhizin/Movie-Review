@@ -11,9 +11,8 @@
       <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/critiques" href="#">Home</a>
       </nav>
-      </nav>
     </div>
-    <div class="container">
+      <div class="container-form">
     <h1>Need A Change?</h1>
     <form action="/critiques/<%= critique.id %>?_method=PUT" method="POST">
       <div class="form-group">
@@ -21,17 +20,19 @@
         <input type="text" class="form-control" id="title" name="title" value="<%= critique.title %>" /><br /> 
       </div>
       <div class="form-group">
-        <label for="image">Cover</label><br />
+        <label for="image">Cover Art</label><br />
         <input type="text" class="form-control" id="image" name="img" value="<%= critique.img %>" /><br />
       </div>
       <div class="form-group">
-        <label for="rating">Rating</label><br />
+        <label for="rating">Rating</label>
+        <br />
         <select type="number" class="form-control" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" >
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          <option><%= critique.rating %></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
         <br /> 
       </div>
@@ -39,12 +40,14 @@
         <label for="entry">Review</label><br />
         <textarea class="form-control" id="entry" name="entry" value="<%= critique.entry %>" rows="15"><%= critique.entry %></textarea><br />
       </div>
-      <!-- button -->
-      <button type="submit" name="" value="Submit Changes" class="btn      btn-primary">Submit Changes</button>   
-      <button type="submit" class="btn btn-light">Back</button>
+      <div class="submit-back-button">
+        <!-- button -->
+        <button type="submit" name="" value="Submit Changes" class="btn      btn-primary">Submit Changes</button>   
+        <button type="submit" class="btn btn-light">Back</button>
+      </div>
     </form>
+    </div>
     <!-- partial -->
-   </div>
       <%- include ('../partials/script.ejs') %>
   </body>
 </html>   

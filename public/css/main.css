@@ -1,14 +1,21 @@
+* {
+  font-family: "Prata", serif;
+}
+
+.container-form {
+  padding-top: 50px;
+  width: 40%;
+  margin: 0 auto;
+}
+
 .header {
+  margin-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.add-button {
-  margin-left: 110px;
-}
-
-ul.reviews {
+.reviews {
   padding: 0;
   list-style-type: none;
   display: flex;
@@ -16,12 +23,26 @@ ul.reviews {
   flex-wrap: wrap;
 }
 
-li.review {
+.review {
   flex: calc(100% / 3);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: 40px;
+}
+
+.review > a > h4 {
+  text-align: center;
+  color: black;
+}
+.review > a:hover {
+  text-decoration: none;
+}
+
+.rating {
+  margin-top: 5px;
+  margin-bottom: auto;
 }
 
 li a {
@@ -38,14 +59,63 @@ li a:hover {
   resize: none;
 }
 
+.welcome-user {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 1250px;
+}
+
+.username-margin {
+  margin-right: 10px;
+}
+
 img {
   width: 400px;
   height: auto;
+  max-height: 300px;
+  margin-bottom: 0;
+}
+
+/* try this */
+/*img li {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+  background-color: #f5f5f5;
+  color: #bdc3c7;
+} */
+
+.edit-title {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+/* buttons */
+.submit-back-button {
+  margin-bottom: 40px;
+  margin-top: 5px;
+}
+
+.edit-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.entry-text {
+  max-width: 375px;
+}
+
+.delete-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
 }
 
 /* media queries */
 @media only screen and (max-width: 800px) {
-  .container  {
+  .container {
     height: 5em;
     width: 5em;
   }
@@ -55,5 +125,8 @@ img {
   .container {
     height: 2em;
     width: 2em;
+  }
+  .container-form {
+    width: 90%;
   }
 }
