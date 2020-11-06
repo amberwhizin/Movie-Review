@@ -83,6 +83,10 @@ img {
   justify-content: space-between;
 }
 
+.entry-text {
+  max-width: 375px;
+}
+
 .delete-show {
   display: flex;
   flex-direction: row;

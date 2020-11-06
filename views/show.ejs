@@ -23,7 +23,7 @@
     <div class="show-image">
       <img src="<%= critique.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 mb-5 bg-white rounded"%>" class="shadow p-3 mb-5 bg-white rounded"/><br />
     </div>
-    <p><%= critique.entry %></p>
+    <p class="entry-text"><%= critique.entry %></p>
     <div class="edit-show">
       <!-- edit -->
       <a href="/critiques/<%= critique.id %>/edit"><button type="submit" class="btn btn-light">Edit</button></a>
