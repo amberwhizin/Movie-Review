@@ -11,20 +11,20 @@
       <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/critiques" href="#">Home</a>
         <!-- add button -->
-          <a href="/critiques/new"><button class="btn btn-outline-success">Add Critique</button>
+          <a class="navbar-item" href="/critiques/new" href="#"><button class="btn btn-outline-success">Add Critique</button>
           </a>
-           <!-- and user id -->
-           <div class="welcome-user">
-             <div class="username-margin">
-           Welcome <% if (currentUser) { %>    
-            <%= currentUser.username %>
-          </div>
-            <form action="/sessions?_method=DELETE" method="POST">
-              <a href="/sessions/new"><button class="btn btn-outline-secondary">Log Out</button>
-              </a>
-            </form>
-         <% } %>
-        </div>
+           <!-- username -->
+           <div class="navbar-nav ml-auto">
+            <div class="navbar-text mr-4">
+              Welcome <% if (currentUser) { %>    
+               <%= currentUser.username %>
+            </div>
+              <form class="form-inline" action="/sessions?_method=DELETE" method="POST">
+                <a class="navbar-item" href="/sessions/new" href="#"><button class="btn btn-outline-secondary">Log Out</button>
+                </a>
+              </form>
+           <% } %>  
+           </div>
       </nav>
       <div class="header">
         <h1>Telly Critic</h1>
@@ -40,11 +40,12 @@
             <br /> 
             <!-- img -->
 
-              <img src="<%= current.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 mb-5 bg-white rounded" /> 
+              <img src="<%= current.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 bg-white rounded" /> 
           </a>
-          <br />
           <!-- rating -->
-          Rating: <%=current.rating %> 
+          <div class="rating">
+            Rating: <%=current.rating %> 
+          </div>
         </li>
         <% } %>
       </ul>

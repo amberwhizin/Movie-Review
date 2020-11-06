@@ -18,6 +18,12 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: 40px;
+}
+
+.rating {
+  margin-top: 5px;
+  margin-bottom: auto;
 }
 
 li a {
@@ -48,6 +54,7 @@ img {
   width: 400px;
   height: auto;
   max-height: 300px;
+  margin-bottom: 0;
 }
 
 /* try this */
@@ -59,11 +66,28 @@ img {
   color: #bdc3c7;
 } */
 
-/* buttons */
+.edit-title {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
 
+/* buttons */
 .submit-back-button {
   margin-bottom: 40px;
   margin-top: 5px;
+}
+
+.edit-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
 }
 
 /* media queries */
