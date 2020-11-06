@@ -25,8 +25,10 @@
         <input type="text" class="form-control" id="image" name="img" value="<%= critique.img %>" /><br />
       </div>
       <div class="form-group">
-        <label for="rating">Rating</label><br />
+        <label for="rating">Rating</label>
+        <br />
         <select type="number" class="form-control" id="rating" name="rating" value="<%= critique.rating %>" min="0" max="5" >
+          <option><%= critique.rating %></option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -39,9 +41,11 @@
         <label for="entry">Review</label><br />
         <textarea class="form-control" id="entry" name="entry" value="<%= critique.entry %>" rows="15"><%= critique.entry %></textarea><br />
       </div>
-      <!-- button -->
-      <button type="submit" name="" value="Submit Changes" class="btn      btn-primary">Submit Changes</button>   
-      <button type="submit" class="btn btn-light">Back</button>
+      <div class="submit-back-button">
+        <!-- button -->
+        <button type="submit" name="" value="Submit Changes" class="btn      btn-primary">Submit Changes</button>   
+        <button type="submit" class="btn btn-light">Back</button>
+      </div>
     </form>
     <!-- partial -->
    </div>

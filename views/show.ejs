@@ -13,10 +13,12 @@
     </nav>
     <!-- define title -->
     <div class="review">
-    <% const title = critique.title %>    
-    <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
+    <div class="edit-title">
+      <% const title = critique.title %>    
+      <h2><p><%= title.toUpperCase()[0] + title.slice(1) %></p></h2>
+    </div>
     <!-- rating -->
-    Rating: <%= critique.rating %>  
+    <p>Rating: <%= critique.rating %></p> 
     <!-- image will be-->
     <div class="show-image">
       <img src="<%= critique.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 mb-5 bg-white rounded"%>" class="shadow p-3 mb-5 bg-white rounded"/><br />

@@ -59,6 +59,13 @@ img {
   color: #bdc3c7;
 } */
 
+/* buttons */
+
+.submit-back-button {
+  margin-bottom: 40px;
+  margin-top: 5px;
+}
+
 /* media queries */
 @media only screen and (max-width: 800px) {
   .container {
