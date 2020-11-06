@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include ('../partials/head.ejs') %>
-    <title></title>
-  </head>
-  <body>
-    <!-- siting bootstrap docs -->
-    <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
-    <div class="container-fullwidth">
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/critiques" href="#">Home</a>
-      </nav>
-      <!-- define title -->
-      <% const title = critique.title %>    
-      <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
-      <!-- rating -->
-      Rating: <%= critique.rating %>  
-      <!-- image will be-->
-      <div class="show-image">
-        <img src="<%= critique.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 mb-5 bg-white rounded"%>" class="shadow p-3 mb-5 bg-white rounded"/><br />
-         <p><%= critique.entry %></p>
-            <!-- edit -->
-         <p>
-          <a href="/critiques/<%= critique.id %>/edit"><button type="submit" class="btn btn-light">Edit</button></a>
-            <!-- delete -->
-          <form action="/critiques/<%= critique.id %>?_method=DELETE" method="POST">
-              <button type="submit" value="DELETE" class="btn btn-danger">Delete</button>
-          </form>
-         </p>
-      </div>
-      <br />
+<head>
+  <%- include ('../partials/head.ejs') %>
+  <title></title>
+</head>
+<body>
+  <!-- siting bootstrap docs -->
+  <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
+  <div class="container-fullwidth">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/critiques" href="#">Home</a>
+    </nav>
+    <!-- define title -->
+    <div class="review">
+    <% const title = critique.title %>    
+    <h2><%= title.toUpperCase()[0] + title.slice(1) %></h2>
+    <!-- rating -->
+    Rating: <%= critique.rating %>  
+    <!-- image will be-->
+    <div class="show-image">
+      <img src="<%= critique.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 mb-5 bg-white rounded"%>" class="shadow p-3 mb-5 bg-white rounded"/><br />
     </div>
-      <%- include ('../partials/script.ejs') %>
-  </body>
+    <p><%= critique.entry %></p>
+    <!-- edit -->
+    <p>
+      <a href="/critiques/<%= critique.id %>/edit"><button type="submit" class="btn btn-light">Edit</button></a>
+      <!-- delete -->
+      <form action="/critiques/<%= critique.id %>?_method=DELETE" method="POST">
+      <button type="submit" value="DELETE" class="btn btn-danger">Delete</button>
+      </form>
+     </p>
+
+  <br />
+</div>
+</div>
+<%- include ('../partials/script.ejs') %>
+</body>
 </html>
