@@ -1,4 +1,15 @@
+* {
+  font-family: "Prata", serif;
+}
+
+.container-form {
+  padding-top: 50px;
+  width: 40%;
+  margin: 0 auto;
+}
+
 .header {
+  margin-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -114,5 +125,8 @@ img {
   .container {
     height: 2em;
     width: 2em;
+  }
+  .container-form {
+    width: 90%;
   }
 }
