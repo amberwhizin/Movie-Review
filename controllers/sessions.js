@@ -29,6 +29,7 @@ sessions.post("/", (req, res) => {
   });
 });
 
+//log out
 sessions.delete("/", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/sessions/new");

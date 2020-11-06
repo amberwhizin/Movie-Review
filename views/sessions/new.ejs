@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include ('../../partials/head.ejs') %>
-    <title></title>
+  <%- include ('../../partials/head.ejs') %>
+  <title></title>
 </head>
 <body>
-    <!-- login page -->
-<div class="container">
+  <!-- login page -->
+  <div class="container">
     <form action="/sessions" method="POST">
-        <label>TellyCritic</label><br />
-        <label>Sign In</label><br />
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username"/><br />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control"id="password" name="password"/><br />
-            <div class="message"></div>
-        </div>
-        <button type="submit" name="" value="Sign-In" class="btn btn-primary">Sign In</button>
+      <h2>TellyCritic</h2><br />
+      <h4>Sign In</h4><br />
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username"/><br />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control"id="password" name="password"/><br />
+      <div class="message"></div>
+      </div>
+      <button type="submit" name="" value="Sign-In" class="btn btn-primary">Sign In</button>
     </form>
-</div>
-     <!-- bootstrap -->
-     <%- include ('../../partials/script.ejs') %>
+    <!-- sign-up -->
+    <div class="new-button-page">
+      <a href="../users/new">
+      <button type="submit" name="" value="Sign-Up" class="btn btn-outline-secondary">Sign Up</button>
+      </a>
+    </div>
+  </div>
+  <!-- bootstrap -->
+  <%- include ('../../partials/script.ejs') %>
 </body>
 </html>
