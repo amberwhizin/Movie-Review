@@ -60,6 +60,8 @@ https://projects.invisionapp.com/freehand/document/OJjMhA5jL
 
 
 ## Unsolved Problems
+- edit page doesn't remember the rating when you go back into edit properly
+- add better error messages and more
 
 
 ## Notes/Goals
