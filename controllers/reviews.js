@@ -21,42 +21,61 @@ critique.get("/new", isAuthenticated, (req, res) => {
 });
 
 //Create
-critique.post("/", (req, res) => {
-  // if (req.body.hasWatched === "on") {
-  //   req.body.hasWatched = true;
-  // } else {
-  //   req.body.hasWatched = false;
-  // }
-  Review.create(req.body, (error, createdCritique) => {
-    res.redirect("/critiques");
-  });
+critique.post("/", isAuthenticated, (req, res) => {
+  Review.create(
+    // copy of req.body and add userId
+    {
+      title: req.body.title,
+      entry: req.body.entry,
+      rating: req.body.rating,
+      img: req.body.img,
+      userId: req.session.currentUser._id,
+    },
+    (error, createdCritique) => {
+      res.redirect("/critiques");
+    }
+  );
 });
 
 //index
 critique.get("/", isAuthenticated, (req, res) => {
-  Review.find({}, (error, allCritiques) => {
-    res.render("index.ejs", {
-      critique: allCritiques,
-      currentUser: req.session.currentUser,
-    });
-  });
+  Review.find(
+    //all  that have that userId
+    { userId: req.session.currentUser._id },
+    (error, allCritiques) => {
+      res.render("index.ejs", {
+        critique: allCritiques,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //edit
 critique.get("/:id/edit", isAuthenticated, (req, res) => {
-  Review.findById(req.params.id, (error, foundCritique) => {
-    res.render("edit.ejs", {
-      critique: foundCritique,
-      currentUser: req.session.currentUser,
-    });
-  });
+  Review.findOne(
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.render("edit.ejs", {
+        critique: foundCritique,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //update
 critique.put("/:id", isAuthenticated, (req, res) => {
-  Review.findByIdAndUpdate(
-    req.params.id,
-    req.body,
+  Review.findOneAndUpdate(
+    //matches userId and critique _id
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    {
+      title: req.body.title,
+      entry: req.body.entry,
+      rating: req.body.rating,
+      img: req.body.img,
+      userId: req.session.currentUser._id,
+    },
     { new: true },
     (error, updateCritique) => {
       res.redirect(`/critiques/${req.params.id}`);
@@ -74,7 +93,7 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQuXJdaVQYCMUnTf-0YsMS00IT39lBDkb4CA&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Face Off",
@@ -83,7 +102,7 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
       rating: 3,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ20W5H06mwUOwuvIciliClksGx8r7neezvzw&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Buffy The Vampire Slayer",
@@ -92,7 +111,7 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRg0Z4powVBDQ3DFGARsOQC_J6OcKquWi7suw&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Tucker and Dale VS Evil",
@@ -101,7 +120,7 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQD8pllsf06LUmPDz2qV1mVdk3NVgXNCiAyqQ&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
     {
       title: "Star Trek: The Next Generation",
@@ -110,7 +129,7 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
       rating: 5,
       img:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS6IsxwnCMnbZ6wDMElcOu1TqTYmPbrGJsoHg&usqp=CAU",
-      hasWatched: true,
+      userId: req.session.currentUser._id,
     },
   ];
   try {
@@ -123,19 +142,28 @@ critique.get("/seed", isAuthenticated, async (req, res) => {
 
 //show
 critique.get("/:id", isAuthenticated, (req, res) => {
-  Review.findById(req.params.id, (error, foundCritique) => {
-    res.render("show.ejs", {
-      critique: foundCritique,
-      currentUser: req.session.currentUser,
-    });
-  });
+  Review.findOne(
+    // searching for both ids, first object with both ids
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.render("show.ejs", {
+        critique: foundCritique,
+        currentUser: req.session.currentUser,
+      });
+    }
+  );
 });
 
 //delete
 critique.delete("/:id", isAuthenticated, (req, res) => {
-  Review.findByIdAndRemove(req.params.id, (error, foundCritique) => {
-    res.redirect("/critiques");
-  });
+  Review.findByIdAndRemove(
+    //condition and callback
+    // userId prevents someone from deleting my tellycritic details, 
+    { _id: req.params.id, userId: req.session.currentUser._id },
+    (error, foundCritique) => {
+      res.redirect("/critiques");
+    }
+  );
 });
 
 console.log("controller/review.js is linked");
