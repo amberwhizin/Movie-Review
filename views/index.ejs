@@ -8,24 +8,7 @@
      <!-- siting bootstrap docs -->
       <!-- https://getbootstrap.com/docs/4.5/components/navbar/ -->
     <div class="container-fullwidth">
-      <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/critiques" href="#">Home</a>
-        <!-- add button -->
-          <a class="navbar-item" href="/critiques/new" href="#"><button class="btn btn-outline-success">Add Critique</button>
-          </a>
-           <!-- username -->
-           <div class="navbar-nav ml-auto">
-            <div class="navbar-text mr-4">
-              Welcome <% if (currentUser) { %>    
-               <%= currentUser.username %>
-            </div>
-              <form class="form-inline" action="/sessions?_method=DELETE" method="POST">
-                <a class="navbar-item" href="/sessions/new" href="#"><button class="btn btn-outline-secondary">Log Out</button>
-                </a>
-              </form>
-           <% } %>  
-           </div>
-      </nav>
+      <%- include ('../partials/nav.ejs') %>
       <div class="header">
         <h1>Telly Critic</h1>
       </div>
