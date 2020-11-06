@@ -36,8 +36,10 @@
           <% const current = critique[index] %>
           <a href="/critiques/<%=current.id %>">
            <!-- title -->
-            <%=current.title %>
-            <br /> 
+            <h4>
+
+              <%=current.title %>
+            </h4>
             <!-- img -->
 
               <img src="<%= current.img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTXmZysrlgoL6i5h2a0zlvHWMQlU1-gt_uU6g&usqp=' %>" class="shadow p-3 bg-white rounded" /> 

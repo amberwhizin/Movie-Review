@@ -21,6 +21,14 @@
   margin-top: 40px;
 }
 
+.review > a > h4 {
+  text-align: center;
+  color: black;
+}
+.review > a:hover {
+  text-decoration: none;
+}
+
 .rating {
   margin-top: 5px;
   margin-bottom: auto;
