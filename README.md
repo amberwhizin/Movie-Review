@@ -1,6 +1,6 @@
 # TellyCritic 
 
-An site where you can record and organize your movie/television show thoughts and feelings. 
+A site where you can record and organize your movie/television show thoughts and feelings. 
 Did you ever watch a movie and have SO many opinions but you just couldn’t share them with your movie/television show partner? 
 I do! 
 Rotten Tomatoes too much for you? 
@@ -25,6 +25,7 @@ This app has 7+ RESTful routes, and is full CRUD with an MVC file structure.
 1. HTML5
 2. CSS3
 3. EJS
+5. Node.js
 4. Bootstrap 
 
 ## Helpful Applications
@@ -47,7 +48,7 @@ The back end was build with:
 - Full CRUD
 - Seed some data/images/new route 
 - Add bootstrap and CSS3
-- Check everything is up to specs and check local and live deploys
+- Check everything is up to specs, check local and live deploys
 
 
 Live site:
@@ -67,6 +68,7 @@ https://projects.invisionapp.com/freehand/document/OJjMhA5jL
 ## Notes/Goals
 
 - A header for home button and catagories
+- Make Accessible
 - An icon for the ratings, i.e. tomatoes
 - Add catagories, romance, horror, date night, etc...
 - I'd like the edit page to highlight all the inputs when in edit page
